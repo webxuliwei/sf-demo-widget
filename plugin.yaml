@@ -1,0 +1,10 @@
+name: demo-widget
+group: rise.io
+apiVersion: v1
+version: 0.1.0
+displayName: 演示组件
+editable: true
+frontend:
+  type: component
+  runtime: remote
+  entry: index.umd.js
