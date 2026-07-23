@@ -2,13 +2,10 @@ import React from 'react'
 export default function HomePage() {
   const lineData = [16, 24, 18, 30, 22, 27, 34, 29]
   const maxValue = Math.max(...lineData)
-  const linePoints = lineData
-    .map((value, index) => {
-      const x = (index / (lineData.length - 1)) * 100
-      const y = 72 - (value / maxValue) * 58
-      return `${x},${y}`
-    })
-    .join(' ')
+  const chartHeight = 58
+  const chartBottom = 70
+  const barSpacing = 100 / lineData.length
+  const barWidth = barSpacing * 0.6
 
   return (
     <div className="h-full flex flex-col">
@@ -27,20 +24,25 @@ export default function HomePage() {
             <p className="text-sm text-muted-foreground mt-2">这是新增的一段说明文字。</p>
           </div>
           <div className="bg-card border border-border rounded-lg p-6">
-            <h2 className="text-sm font-medium text-foreground mb-3">示例折线</h2>
-            <p className="text-xs text-muted-foreground mb-3">一组趋势数据的折线展示。</p>
-            <svg viewBox="0 0 100 72" className="h-36 w-full text-muted-foreground" role="img" aria-label="示例折线图">
-              <polyline
-                fill="none"
-                points={linePoints}
-                className="text-foreground"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
+            <h2 className="text-sm font-medium text-foreground mb-3">示例柱状图</h2>
+            <p className="text-xs text-muted-foreground mb-3">一组趋势数据的柱状展示。</p>
+            <svg viewBox="0 0 100 72" className="h-36 w-full text-muted-foreground" role="img" aria-label="示例柱状图">
+              <line x1="0" y1={chartBottom} x2="100" y2={chartBottom} className="stroke-border" />
               {lineData.map((value, index) => {
-                const x = (index / (lineData.length - 1)) * 100
-                const y = 72 - (value / maxValue) * 58
-                return <circle key={index} cx={x} cy={y} r="1.1" className="text-foreground" fill="currentColor" />
+                const x = index * barSpacing + (barSpacing - barWidth) / 2
+                const barHeight = (value / maxValue) * chartHeight
+                const y = chartBottom - barHeight
+                return (
+                  <rect
+                    key={index}
+                    x={x}
+                    y={y}
+                    width={barWidth}
+                    height={barHeight}
+                    className="text-foreground"
+                    fill="currentColor"
+                  />
+                )
               })}
             </svg>
           </div>
