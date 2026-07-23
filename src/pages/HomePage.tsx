@@ -8,6 +8,9 @@ export default function HomePage() {
       <div className="flex-1 p-4 bg-surface-page">
         <div className="bg-card border rounded p-8 text-center text-muted-foreground">这是演示插件的首页内容。</div>
       </div>
+      <footer className="border-t border-border px-6 py-3">
+        <p className="text-center text-xs text-muted-foreground">© 2026 Rise</p>
+      </footer>
     </div>
   )
 }
