@@ -1,0 +1,1 @@
+{ "name": "demo-widget", "version": "0.1.0", "private": true, "devDependencies": { "tsup": "^8.4.0", "typescript": "^5.9.3", "@types/react": "^18.2.0" } }
