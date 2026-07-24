@@ -93,9 +93,9 @@ export default function HomePage() {
   const cards = useMemo(() => [
     { label: '覆盖厂商数', value: formatNumber(totals.vendorCount), icon: <ProvidersIcon className="h-4 w-4 text-muted-foreground" /> },
     { label: '调用总次数', value: formatNumber(totals.callCount), icon: <CallsIcon className="h-4 w-4 text-muted-foreground" /> },
+    { label: '加权成功率', value: formatRate(avgSuccessRate), icon: <SuccessRateIcon className="h-4 w-4 text-muted-foreground" /> },
     { label: '输入 Token', value: formatNumber(totals.inputTokens), icon: <InputTokenIcon className="h-4 w-4 text-muted-foreground" /> },
     { label: '输出 Token', value: formatNumber(totals.outputTokens), icon: <OutputTokenIcon className="h-4 w-4 text-muted-foreground" /> },
-    { label: '加权成功率', value: formatRate(avgSuccessRate), icon: <SuccessRateIcon className="h-4 w-4 text-muted-foreground" /> },
   ], [totals, avgSuccessRate])
 
   const columns = useMemo(() => [
